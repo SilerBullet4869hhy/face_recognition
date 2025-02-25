@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-face-ws-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: face-ws
+  template:
+    metadata:
+      labels:
+        app: face-ws
+    spec:
+      containers:
+      - name: face-ws-app
+        image: face-ws-app:latest  # 这里使用我们本地构建的镜像
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8800
